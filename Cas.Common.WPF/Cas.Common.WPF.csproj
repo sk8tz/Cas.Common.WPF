@@ -51,6 +51,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\BindableSelectedTreeViewItemBehavior.cs" />
     <Compile Include="Behaviors\CloseableBehavior.cs" />
     <Compile Include="Behaviors\MultiSelectorSelectedItemsBehavior.cs" />
     <Compile Include="Behaviors\ICloseableViewModel.cs" />
