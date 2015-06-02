@@ -63,6 +63,7 @@
     <Compile Include="Converters\HiddenWhenTrueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\InvertBooleanConverter.cs" />
     <Compile Include="ExtensionProperties\FocusExtension.cs" />
     <Compile Include="FrameworkElementExtensions.cs" />
     <Compile Include="ObservableCollectionExtensions.cs" />
