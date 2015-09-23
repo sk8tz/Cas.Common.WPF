@@ -57,6 +57,7 @@
     <Compile Include="Behaviors\ICloseableViewModel.cs" />
     <Compile Include="Controls\AutoGreyableImage.cs" />
     <Compile Include="Controls\BindablePasswordBox.cs" />
+    <Compile Include="Converters\AutomateOnChangeBehavior.cs" />
     <Compile Include="Converters\CollapsedWhenFalseConverter.cs" />
     <Compile Include="Converters\CollapsedWhenTrueConverter.cs" />
     <Compile Include="Converters\HiddenWhenFalseConverter.cs" />
