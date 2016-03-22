@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Cas.Common.WPF.ExtensionProperties
 {
@@ -43,6 +45,14 @@ namespace Cas.Common.WPF.ExtensionProperties
             if ((bool)e.NewValue)
             {
                 uie.Focus(); // Don't care about false values.
+
+                try
+                {
+                    Keyboard.Focus(uie);
+                }
+                catch (Exception)
+                {
+                }                
             }
         }
     }
