@@ -75,10 +75,7 @@ namespace Cas.Common.WPF.Behaviors
 
         void AssociatedObject_Closed(object sender, System.EventArgs e)
         {
-            if (_closeable != null)
-            {
-                _closeable.Closed();
-            }
+            _closeable?.Closed();
         }
     }
 }

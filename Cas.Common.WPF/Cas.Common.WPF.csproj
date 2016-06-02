@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Behaviors\BindableSelectedTreeViewItemBehavior.cs" />
     <Compile Include="Behaviors\CloseableBehavior.cs" />
+    <Compile Include="Behaviors\DraggableBehaviorBase.cs" />
     <Compile Include="Behaviors\MultiSelectorSelectedItemsBehavior.cs" />
     <Compile Include="Behaviors\ICloseableViewModel.cs" />
     <Compile Include="Controls\AutoGreyableImage.cs" />

@@ -11,6 +11,9 @@ namespace Cas.Common.WPF.Test.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        private bool _isFocused;
+        private bool _isEditorVisible;
+
         private readonly ObservableCollection<RowViewModel> _rows = new ObservableCollection<RowViewModel>()
         {
             new RowViewModel() {Name = "One", Value = "1"},
@@ -27,10 +30,20 @@ namespace Cas.Common.WPF.Test.ViewModel
         {
             MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
             SelectTwoCommand = new RelayCommand(SelectTwo);
+            FocusCommand = new RelayCommand(Focus);
         }
 
+        public ICommand FocusCommand { get; private set; }
         public ICommand MoveUpCommand { get; private set; }
         public ICommand SelectTwoCommand { get; private set; }
+
+        private void Focus()
+        {
+            IsEditorVisible = false;
+            IsEditorVisible = true;
+            IsFocused = false;
+            IsFocused = true;
+        }
 
         private void SelectTwo()
         {
@@ -90,6 +103,26 @@ namespace Cas.Common.WPF.Test.ViewModel
                 var rows = SelectedRows.OfType<RowViewModel>();
 
                 return rows.OrderBy(r => Rows.IndexOf(r)).ToArray();
+            }
+        }
+
+        public bool IsFocused
+        {
+            get { return _isFocused; }
+            set
+            {
+                _isFocused = value; 
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool IsEditorVisible
+        {
+            get { return _isEditorVisible; }
+            set
+            {
+                _isEditorVisible = value; 
+                RaisePropertyChanged();
             }
         }
     }

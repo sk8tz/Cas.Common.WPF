@@ -4,24 +4,24 @@
         xmlns:viewModel="clr-namespace:Cas.Common.WPF.Test.ViewModel"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviors="clr-namespace:Cas.Common.WPF.Behaviors;assembly=Cas.Common.WPF"
+        xmlns:extensionProperties="clr-namespace:Cas.Common.WPF.ExtensionProperties;assembly=Cas.Common.WPF"
+        xmlns:converters="clr-namespace:Cas.Common.WPF.Converters;assembly=Cas.Common.WPF"
         DataContext="{x:Static viewModel:Locator.Main}"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <converters:CollapsedWhenFalseConverter x:Key="CollapsedWhenFalseConverter"/>
+    </Window.Resources>
+    
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <ToolBar>
-            <Button Command="{Binding Path=MoveUpCommand}">Move Up</Button>
-            <Button Command="{Binding Path=SelectTwoCommand}">Select Two</Button>
-        </ToolBar>
-        
-        <DataGrid ItemsSource="{Binding Path=Rows}" Grid.Row="1">
-            <i:Interaction.Behaviors>
-                <behaviors:MultiSelectorSelectedItemsBehavior SelectedItems="{Binding SelectedRows, Mode=TwoWay}" />
-            </i:Interaction.Behaviors>
-        </DataGrid>
+        <StackPanel>
+            <Button Command="{Binding Path=FocusCommand}" Margin="4">Focus</Button>
+
+
+            <TextBox Text="Hello" extensionProperties:FocusExtension.IsFocused="{Binding Path=IsFocused}" Margin="4" Visibility="{Binding Path=IsEditorVisible, Converter={StaticResource CollapsedWhenFalseConverter}}"></TextBox>
+            
+            <TextBox Margin="4"></TextBox>
+            <TextBox Margin="4"></TextBox>
+        </StackPanel>
 
     </Grid>
 </Window>
