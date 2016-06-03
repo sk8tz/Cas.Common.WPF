@@ -284,7 +284,7 @@ namespace Cas.Common.WPF.Behaviors
         protected virtual void Reset()
         {
             _state = DragState.Idle;
-            AssociatedObject.ReleaseMouseCapture();   
+            AssociatedObject?.ReleaseMouseCapture();   
         }
     }
 }
