@@ -212,7 +212,7 @@ namespace Cas.Common.WPF.Behaviors
                     e.Handled = true;    
                     
                     //Start the drag operation
-                    StartDrag(position.Value);             
+                    StartDrag(_startPosition);             
                 }
 
             }
