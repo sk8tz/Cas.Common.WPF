@@ -64,7 +64,6 @@ namespace Cas.Common.WPF.Behaviors
             AssociatedObject.MouseMove += Element_MouseMove;
             AssociatedObject.MouseLeftButtonUp += ElementOnMouseLeftButtonUp;
             AssociatedObject.Loaded += AssociatedObject_Loaded;
-            AssociatedObject.Unloaded += AssociatedObject_Unloaded;
 
             GetWindow();
             
@@ -76,11 +75,6 @@ namespace Cas.Common.WPF.Behaviors
         private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
         {
             GetWindow();
-        }
-
-        private void AssociatedObject_Unloaded(object sender, RoutedEventArgs e)
-        {
-            Cleanup();
         }
 
         private void WindowKeyUp(object sender, KeyEventArgs e)
@@ -98,6 +92,7 @@ namespace Cas.Common.WPF.Behaviors
             AssociatedObject.MouseLeftButtonDown -= Element_MouseLeftButtonDown;
             AssociatedObject.MouseMove -= Element_MouseMove;
             AssociatedObject.MouseLeftButtonUp -= ElementOnMouseLeftButtonUp;
+            AssociatedObject.Loaded -= AssociatedObject_Loaded;
 
             if (_window != null)
             {
