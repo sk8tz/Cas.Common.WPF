@@ -152,7 +152,7 @@ namespace Cas.Common.WPF.Behaviors
         /// <summary>
         /// No drag occurred - the user just clicked the control.
         /// </summary>
-        protected virtual void Clicked()
+        protected virtual void Clicked(Point position)
         {
             
         }
@@ -236,7 +236,7 @@ namespace Cas.Common.WPF.Behaviors
             {
                 case DragState.MouseDown:
 
-                    Clicked();
+                    Clicked(_startPosition);
                     break;
 
                 case DragState.Dragging:
