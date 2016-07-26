@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Cas.Common.WPF.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +52,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\ActiveWindowBehavior.cs" />
     <Compile Include="Behaviors\BindableSelectedTreeViewItemBehavior.cs" />
     <Compile Include="Behaviors\CloseableBehavior.cs" />
     <Compile Include="Behaviors\DraggableBehaviorBase.cs" />
@@ -63,9 +65,21 @@
     <Compile Include="Converters\CollapsedWhenTrueConverter.cs" />
     <Compile Include="Converters\HiddenWhenFalseConverter.cs" />
     <Compile Include="Converters\HiddenWhenTrueConverter.cs" />
+    <Compile Include="FileDialogOptions.cs" />
+    <Compile Include="FileDialogResult.cs" />
+    <Compile Include="FileDialogService.cs" />
+    <Compile Include="IFileDialogService.cs" />
+    <Compile Include="Interfaces\IMessageBoxService.cs" />
+    <Compile Include="Interfaces\IViewRegistration.cs" />
+    <Compile Include="Interfaces\IViewService.cs" />
+    <Compile Include="IViewServiceExtensions.cs" />
+    <Compile Include="MessageBoxService.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewRegistration.cs" />
+    <Compile Include="ViewService.cs" />
     <Compile Include="WeakAction.cs" />
     <Compile Include="WeakFunc.cs" />
+    <Compile Include="WindowBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\InvertBooleanConverter.cs" />

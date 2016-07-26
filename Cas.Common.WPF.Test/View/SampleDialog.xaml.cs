@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cas.Common.WPF.Test
+namespace Cas.Common.WPF.Test.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SampleDialog.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class SampleDialog : Window
     {
-        public MainWindow()
+        public SampleDialog()
         {
             InitializeComponent();
         }

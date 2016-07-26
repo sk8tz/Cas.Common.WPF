@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using Cas.Common.WPF.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 
@@ -11,6 +12,9 @@ namespace Cas.Common.WPF.Test.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IViewService _viewService;
+        private readonly IMessageBoxService _messageBoxService;
+        private readonly IFileDialogService _fileDialogService;
         private bool _isFocused;
         private bool _isEditorVisible;
 
@@ -26,16 +30,47 @@ namespace Cas.Common.WPF.Test.ViewModel
             new RowViewModel() {Name = "Eight", Value = "8"},
         };
 
-        public MainViewModel()
+        public MainViewModel(IViewService viewService, IMessageBoxService messageBoxService, IFileDialogService fileDialogService)
         {
+            if (viewService == null) throw new ArgumentNullException(nameof(viewService));
+            if (messageBoxService == null) throw new ArgumentNullException(nameof(messageBoxService));
+            if (fileDialogService == null) throw new ArgumentNullException(nameof(fileDialogService));
+
+            _viewService = viewService;
+            _messageBoxService = messageBoxService;
+            _fileDialogService = fileDialogService;
             MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
             SelectTwoCommand = new RelayCommand(SelectTwo);
             FocusCommand = new RelayCommand(Focus);
+            LaunchSampleDialogCommand = new RelayCommand(LaunchSampleDialog);
+            OpenFileCommand = new RelayCommand(OpenFile);
         }
 
         public ICommand FocusCommand { get; private set; }
         public ICommand MoveUpCommand { get; private set; }
         public ICommand SelectTwoCommand { get; private set; }
+        public ICommand LaunchSampleDialogCommand { get; }
+        public ICommand OpenFileCommand { get; }
+
+        private void OpenFile()
+        {
+            var result = _fileDialogService.ShowOpenFileDialog();
+
+            if (result != null)
+            {
+                _messageBoxService.ShowMessageBox(result.Filename, "Selected Filename");
+            }
+        }
+
+        private void LaunchSampleDialog()
+        {
+            var viewModel = new SampleDialogViewModel(_messageBoxService)
+            {
+                Title = "Hello"
+            };
+
+            _viewService.ShowDialog(viewModel);
+        }
 
         private void Focus()
         {
@@ -58,8 +93,6 @@ namespace Cas.Common.WPF.Test.ViewModel
 
                 Rows.Move(index, index - 1);    
             }
-
-            
         }
 
         private bool CanMoveUp()
