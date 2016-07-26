@@ -58,7 +58,7 @@ namespace Cas.Common.WPF.Test.ViewModel
 
             if (result != null)
             {
-                _messageBoxService.ShowMessageBox(result.Filename, "Selected Filename");
+                _messageBoxService.ShowMessageBox(result.FileName, "Selected Filename");
             }
         }
 

@@ -19,7 +19,7 @@
 
         public string DefaultExt { get; set; } 
 
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         public string Filter { get; set; }
 

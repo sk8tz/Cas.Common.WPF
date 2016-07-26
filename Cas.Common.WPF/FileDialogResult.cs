@@ -2,8 +2,8 @@
 {
     public class FileDialogResult
     {
-        public string Filename { get; set; } 
+        public string FileName { get; set; } 
 
-        public string[] Filenames { get; set; }
+        public string[] FileNames { get; set; }
     }
 }

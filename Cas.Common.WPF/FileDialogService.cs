@@ -6,13 +6,6 @@ namespace Cas.Common.WPF
 {
     public class FileDialogService : IFileDialogService
     {
-        private readonly IViewService _viewService;
-
-        public FileDialogService(IViewService viewService = null)
-        {
-            _viewService = viewService;
-        }
-
         private FileDialogResult ShowDialog(FileDialog dialog, FileDialogOptions options = null)
         {
             if (dialog == null) throw new ArgumentNullException(nameof(dialog));
@@ -40,8 +33,8 @@ namespace Cas.Common.WPF
             {
                 return new FileDialogResult()
                 {
-                    Filename = dialog.FileName,
-                    Filenames = dialog.FileNames
+                    FileName = dialog.FileName,
+                    FileNames = dialog.FileNames
                 };
             }
 
@@ -67,7 +60,7 @@ namespace Cas.Common.WPF
             dialog.CheckFileExists = options.CheckFileExists;
             dialog.CheckPathExists = options.CheckPathExists;
             dialog.DefaultExt = options.DefaultExt;
-            dialog.FileName = options.Filename;
+            dialog.FileName = options.FileName;
             dialog.Filter = options.Filter;
             dialog.FilterIndex = options.FilterIndex;
             dialog.InitialDirectory = options.InitialDirectory;
