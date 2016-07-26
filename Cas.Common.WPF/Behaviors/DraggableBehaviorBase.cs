@@ -6,7 +6,7 @@ using System.Windows.Interactivity;
 namespace Cas.Common.WPF.Behaviors
 {
     /// <summary>
-    /// 
+    /// Simplifies operations dealing with dragging an element.
     /// </summary>
     public class DraggableBehaviorBase : Behavior<FrameworkElement>
     {
@@ -37,6 +37,7 @@ namespace Cas.Common.WPF.Behaviors
         private DragState _state = DragState.Idle;
         private Point _startPosition;
         private Window _window;
+        private Point _relativeStartPosition;
 
         /// <summary>
         /// Attempts to get the window associated with this user control.
@@ -66,7 +67,7 @@ namespace Cas.Common.WPF.Behaviors
             AssociatedObject.Loaded += AssociatedObject_Loaded;
 
             GetWindow();
-            
+
             Reset();
 
             base.OnAttached();
@@ -120,7 +121,7 @@ namespace Cas.Common.WPF.Behaviors
         /// <param name="position"></param>
         protected virtual void StartDrag(Point position)
         {
-            
+
         }
 
         /// <summary>
@@ -129,7 +130,7 @@ namespace Cas.Common.WPF.Behaviors
         /// <param name="position"></param>
         protected virtual void ContinueDrag(Point position)
         {
-            
+
         }
 
         /// <summary>
@@ -137,7 +138,7 @@ namespace Cas.Common.WPF.Behaviors
         /// </summary>
         protected virtual void CancelDrag()
         {
-            
+
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Cas.Common.WPF.Behaviors
         /// <param name="position"></param>
         protected virtual void FinishDrag(Point position)
         {
-            
+
         }
 
         /// <summary>
@@ -154,7 +155,7 @@ namespace Cas.Common.WPF.Behaviors
         /// </summary>
         protected virtual void Clicked(Point position)
         {
-            
+
         }
 
         /// <summary>
@@ -167,6 +168,16 @@ namespace Cas.Common.WPF.Behaviors
             return e.GetPosition(null);
         }
 
+        /// <summary>
+        /// Gets the relative start position from where the user first clicked on the associated object.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        protected virtual Point GetRelativePositionFromMouse(MouseEventArgs e)
+        {
+            return e.GetPosition(AssociatedObject);
+        }
+
         private void Element_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!IsEnabled)
@@ -175,6 +186,7 @@ namespace Cas.Common.WPF.Behaviors
             if (_state == DragState.Idle)
             {
                 _startPosition = GetPositionFromMouse(e);
+                _relativeStartPosition = GetRelativePositionFromMouse(e);
                 _state = DragState.MouseDown;
 
                 e.Handled = true;
@@ -204,15 +216,15 @@ namespace Cas.Common.WPF.Behaviors
                 {
                     //Make sure that the item is selcted and start dragging.
                     _state = DragState.Dragging;
-                  
+
                     //Focus
                     AssociatedObject.Focus();
 
                     //We've got this
-                    e.Handled = true;    
-                    
+                    e.Handled = true;
+
                     //Start the drag operation
-                    StartDrag(_startPosition);             
+                    StartDrag(_startPosition);
                 }
 
             }
@@ -268,9 +280,17 @@ namespace Cas.Common.WPF.Behaviors
             get { return _startPosition; }
         }
 
+        /// <summary>
+        /// This is the position relative to the mouse click on the element. This is useful for dragging components to specific locations on the design surface.
+        /// </summary>
+        protected Point RelativeStartPosition
+        {
+            get { return _relativeStartPosition; }
+        }
+
         private static void PropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            (obj as DraggableBehaviorBase)?.Reset();            
+            (obj as DraggableBehaviorBase)?.Reset();
         }
 
         /// <summary>
@@ -279,7 +299,7 @@ namespace Cas.Common.WPF.Behaviors
         protected virtual void Reset()
         {
             _state = DragState.Idle;
-            AssociatedObject?.ReleaseMouseCapture();   
+            AssociatedObject?.ReleaseMouseCapture();
         }
     }
 }
