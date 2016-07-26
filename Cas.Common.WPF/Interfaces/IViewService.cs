@@ -23,19 +23,15 @@ namespace Cas.Common.WPF.Interfaces
         void Show<TViewModel>(TViewModel viewModel);
 
         /// <summary>
-        /// The curently active window sets this.
-        /// </summary>
-        /// <param name="window"></param>
-        void SetActiveWindow(Window window);
-
-        /// <summary>
         /// Add a registration.
         /// </summary>
         void AddRegistration(IViewRegistration registration);
 
         /// <summary>
-        /// Gets the active window
+        /// Removes a registration
         /// </summary>
-        Window ActiveWindow { get; }
+        /// <param name="registration"></param>
+        void RemoveRegistration(IViewRegistration registration);
+
     }
 }

@@ -11,11 +11,7 @@
         WindowStartupLocation="CenterOwner"
         d:DataContext="{d:DesignInstance viewModel:SampleDialogViewModel, d:IsDesignTimeCreatable=False}"
         Title="{Binding Path=Title}" Height="300" Width="300">
-    
-    <i:Interaction.Behaviors>
-        <behaviors:ActiveWindowBehavior/>
-    </i:Interaction.Behaviors>
-    
+     
     <Grid>
         <StackPanel>
             <Button Command="{Binding Path=ShowMessageCommand}">Show Message</Button>

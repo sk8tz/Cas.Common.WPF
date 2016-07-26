@@ -52,7 +52,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\ActiveWindowBehavior.cs" />
     <Compile Include="Behaviors\BindableSelectedTreeViewItemBehavior.cs" />
     <Compile Include="Behaviors\CloseableBehavior.cs" />
     <Compile Include="Behaviors\DraggableBehaviorBase.cs" />
@@ -79,7 +78,7 @@
     <Compile Include="ViewService.cs" />
     <Compile Include="WeakAction.cs" />
     <Compile Include="WeakFunc.cs" />
-    <Compile Include="WindowBase.cs" />
+    <Compile Include="WindowUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\InvertBooleanConverter.cs" />

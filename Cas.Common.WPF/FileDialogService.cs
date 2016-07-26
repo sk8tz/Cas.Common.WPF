@@ -25,7 +25,7 @@ namespace Cas.Common.WPF
             bool? result;
 
             //Try to get the active window
-            var owner = _viewService?.ActiveWindow;
+            var owner = WindowUtil.GetActiveWindow();
 
             if (owner == null)
             {

@@ -19,7 +19,7 @@ namespace Cas.Common.WPF
             MessageBoxImage icon = MessageBoxImage.None, 
             MessageBoxResult defaultResult = MessageBoxResult.None)
         {
-            var owner = _viewService?.ActiveWindow;
+            var owner = WindowUtil.GetActiveWindow();
 
             if (owner == null)
             {

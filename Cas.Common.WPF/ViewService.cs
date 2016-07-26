@@ -8,7 +8,6 @@ namespace Cas.Common.WPF
     public class ViewService : IViewService
     {
         private readonly Dictionary<Type, IViewRegistration> _registrations = new Dictionary<Type, IViewRegistration>();
-        private Window _currentWindow;
 
         /// <summary>
         /// Singleton instance of the view service.
@@ -44,7 +43,7 @@ namespace Cas.Common.WPF
             var window = registration.CreateView();
 
             window.DataContext = viewModel;
-            window.Owner = _currentWindow;
+            window.Owner = WindowUtil.GetActiveWindow();
 
             return window;
         }
@@ -63,11 +62,6 @@ namespace Cas.Common.WPF
             window.Show();
         }
 
-        public void SetActiveWindow(Window window)
-        {
-            _currentWindow = window;
-        }
-
         public void AddRegistration(IViewRegistration registration)
         {
             if (registration == null) throw new ArgumentNullException(nameof(registration));
@@ -75,9 +69,11 @@ namespace Cas.Common.WPF
             _registrations.Add(registration.ViewModelType, registration);
         }
 
-        public Window ActiveWindow
+        public void RemoveRegistration(IViewRegistration registration)
         {
-            get { return _currentWindow; }
+            if (registration == null) throw new ArgumentNullException(nameof(registration));
+
+            _registrations.Remove(registration.ViewModelType);
         }
     }
 }
