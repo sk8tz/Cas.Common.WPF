@@ -54,7 +54,12 @@ namespace Cas.Common.WPF.Test.ViewModel
 
         private void OpenFile()
         {
-            var result = _fileDialogService.ShowOpenFileDialog();
+            var options = new FileDialogOptions()
+            {
+                Filter = "Text files (*.txt)|*.txt"
+            };
+
+            var result = _fileDialogService.ShowOpenFileDialog(options);
 
             if (result != null)
             {
