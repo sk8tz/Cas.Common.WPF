@@ -6,6 +6,9 @@ namespace Cas.Common.WPF
 {
     public class WindowBase : Window
     {
+
+        private IViewService _viewService;
+
         protected override void OnActivated(EventArgs e)
         {
             ViewService.SetActiveWindow(this);
@@ -15,7 +18,16 @@ namespace Cas.Common.WPF
 
         public virtual IViewService ViewService
         {
-            get { return WPF.ViewService.Instance; }
+            get
+            {
+                if (_viewService != null)
+                {
+                    return _viewService;
+                }
+
+                return WPF.ViewService.Instance;
+            }
+            set { _viewService = value; }
         }
     }
 }
