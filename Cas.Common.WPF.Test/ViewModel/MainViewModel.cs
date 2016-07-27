@@ -59,7 +59,7 @@ namespace Cas.Common.WPF.Test.ViewModel
                 Filter = "Text files (*.txt)|*.txt"
             };
 
-            var result = _fileDialogService.ShowOpenFileDialog(options);
+            var result = _fileDialogService.ShowSaveFileDialog(options);
 
             if (result != null)
             {

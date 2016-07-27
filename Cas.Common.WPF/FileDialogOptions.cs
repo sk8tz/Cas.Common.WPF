@@ -5,7 +5,6 @@
         public FileDialogOptions()
         {
             AddExtension = true;
-            CheckFileExists = true;
             CheckPathExists = true;
             ValidateNames = true;
             FilterIndex = 1;

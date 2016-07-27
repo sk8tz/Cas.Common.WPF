@@ -193,22 +193,22 @@ namespace Cas.Common.WPF
 
         private bool CanInsertBelow()
         {
-            return SelectedEntries.Length == 1 || Count == 0;
+            return true;
         }
 
         private void InsertBelow()
         {
-            var firstSelected = SelectedEntries.LastOrDefault();
+            var lastSelected = SelectedEntries.LastOrDefault();
 
             var entry = CreateNewEntry();
 
-            if (firstSelected == null)
+            if (lastSelected == null)
             {
                 Add(entry);
             }
             else
             {
-                var index = IndexOf(firstSelected);
+                var index = IndexOf(lastSelected);
 
                 Insert(index + 1, entry);
             }
