@@ -21,7 +21,7 @@
   </metadata>
 
   <files>
-    <file target="lib\net45" src="Cas.Common.WPF\bin\release\Cas.Common.WPF.dll"/>
-    <file target="lib\net45" src="Cas.Common.WPF\bin\release\Cas.Common.WPF.xml"/>
+    <file target="lib\net45" src="bin\release\Cas.Common.WPF.dll"/>
+    <file target="lib\net45" src="bin\release\Cas.Common.WPF.xml"/>
   </files>
 </package>
