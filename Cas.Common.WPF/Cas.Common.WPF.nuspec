@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Cas.Common.WPF</id>
+    <version>1.0.0.0</version>
+    <authors>CaptiveAire</authors>
+    <owners>CaptiveAire</owners>
+    <projectUrl>https://github.com/CaptiveAire/Cas.Common.WPF</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WPF / MVVM Utilities</description>
+    <copyright>Copyright CaptiveAire 2016</copyright>
+    <tags>MVVM WPF</tags>
+
+    <dependencies>
+      <dependency id="Expression.Blend.Sdk" version="1.0.2"  />
+    </dependencies>
+
+    <references>
+      <reference file="Cas.Common.WPF.dll" />
+    </references>
+  </metadata>
+
+  <files>
+    <file target="lib\net45" src="Cas.Common.WPF\bin\release\Cas.Common.WPF.dll"/>
+    <file target="lib\net45" src="Cas.Common.WPF\bin\release\Cas.Common.WPF.xml"/>
+  </files>
+</package>
