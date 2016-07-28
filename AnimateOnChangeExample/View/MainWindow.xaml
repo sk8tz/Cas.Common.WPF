@@ -1,0 +1,33 @@
+﻿<Window x:Class="AnimateOnChangeExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimateOnChangeExample"
+        xmlns:viewModel="clr-namespace:AnimateOnChangeExample.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:Cas.Common.WPF.Behaviors;assembly=Cas.Common.WPF"
+        mc:Ignorable="d"
+        DataContext="{x:Static viewModel:ViewModelLocator.Main}"
+        Title="AnimateOnChange Example" Height="100" Width="525">
+    
+    <Window.Resources>
+        <Storyboard x:Key="ChangeAnimation" TargetName="TextBoxBackground" TargetProperty="Color">
+            <ColorAnimation Duration="0:0:0.000" To="Yellow"  />
+            <ColorAnimation Duration="0:0:1.500" BeginTime="0:0:1.500" To="{x:Static SystemColors.ControlLightLightColor}"  />
+        </Storyboard>
+    </Window.Resources>
+
+    <i:Interaction.Behaviors>
+        <behaviors:AnimateOnChangeBehavior Value="{Binding Path=Text}" Storyboard="{StaticResource ChangeAnimation}"/>
+    </i:Interaction.Behaviors>
+
+    <Grid>
+        <TextBox Margin="4" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}"  >
+            <TextBox.Background>
+                <SolidColorBrush Color="{x:Static SystemColors.ControlLightLightColor}" x:Name="TextBoxBackground" />
+            </TextBox.Background>
+        </TextBox>
+    </Grid>
+</Window>
+

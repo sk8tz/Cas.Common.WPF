@@ -4,12 +4,15 @@ using Cas.Common.WPF.Interfaces;
 
 namespace Cas.Common.WPF
 {
+    /// <summary>
+    /// This is internal so that callers are encouraged to use the extension methods (e.g. Register).
+    /// </summary>
     internal class ViewRegistration : IViewRegistration
     {
         private readonly Type _viewModelType;
         private readonly Func<Window> _windowFactory;
 
-        public ViewRegistration(Type viewModelType, Func<Window> windowFactory)
+        internal ViewRegistration(Type viewModelType, Func<Window> windowFactory)
         {
             if (viewModelType == null) throw new ArgumentNullException(nameof(viewModelType));
             if (windowFactory == null) throw new ArgumentNullException(nameof(windowFactory));

@@ -2,9 +2,12 @@
 
 namespace Cas.Common.WPF.Interfaces
 {
+    /// <summary>
+    /// A mockable interface for displaying standard windows message boxes.
+    /// </summary>
     public interface IMessageBoxService
     {
-        MessageBoxResult ShowMessageBox(string messageBoxText,
+        MessageBoxResult Show(string messageBoxText,
             string caption = null,
             MessageBoxButton button = MessageBoxButton.OK,
             MessageBoxImage icon = MessageBoxImage.None,

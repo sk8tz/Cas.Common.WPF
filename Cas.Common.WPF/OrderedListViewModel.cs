@@ -6,7 +6,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
 
 namespace Cas.Common.WPF
 {
@@ -53,13 +52,13 @@ namespace Cas.Common.WPF
             _deletedAction = deletedAction;
             _canDelete = canDelete;
 
-            MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
-            MoveDownCommand = new RelayCommand(MoveDown, CanMoveDown);
-            DeleteCommand = new RelayCommand(Delete, CanDelete);
-            MoveToTopCommand = new RelayCommand(MoveToTop, CanMoveToTop);
-            MoveToBottomCommand = new RelayCommand(MoveToBottom, CanMoveToBottom);
-            InsertAboveCommand = new RelayCommand(InsertAbove, CanInsertAbove);
-            InsertBelowCommand = new RelayCommand(InsertBelow, CanInsertBelow);
+            MoveUpCommand = new SimpleRelayCommand(MoveUp, CanMoveUp);
+            MoveDownCommand = new SimpleRelayCommand(MoveDown, CanMoveDown);
+            DeleteCommand = new SimpleRelayCommand(Delete, CanDelete);
+            MoveToTopCommand = new SimpleRelayCommand(MoveToTop, CanMoveToTop);
+            MoveToBottomCommand = new SimpleRelayCommand(MoveToBottom, CanMoveToBottom);
+            InsertAboveCommand = new SimpleRelayCommand(InsertAbove, CanInsertAbove);
+            InsertBelowCommand = new SimpleRelayCommand(InsertBelow, CanInsertBelow);
         }
        
         /// <summary>

@@ -58,7 +58,12 @@ namespace Cas.Common.WPF.Behaviors
 
         void Closeable_Close(object sender, CloseEventArgs e)
         {
-            AssociatedObject.DialogResult = e.DialogResult;
+            //https://social.msdn.microsoft.com/Forums/vstudio/en-US/c95f1acb-5dee-4670-b779-b07b06afafff/where-is-modal-property?forum=wpf
+            if (System.Windows.Interop.ComponentDispatcher.IsThreadModal)
+            {
+                AssociatedObject.DialogResult = e.DialogResult;
+            }
+
             AssociatedObject.Close();
         }
 

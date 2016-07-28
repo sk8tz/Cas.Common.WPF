@@ -1,0 +1,32 @@
+﻿<Window x:Class="ViewServiceExample.View.EditTextView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ViewServiceExample.View"
+        xmlns:viewModel="clr-namespace:ViewServiceExample.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:Cas.Common.WPF.Behaviors;assembly=Cas.Common.WPF"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        d:DataContext="{d:DesignInstance viewModel:EditTextViewModel, d:IsDesignTimeCreatable=False}"
+        Title="Edit Text" SizeToContent="Height" Width="300" ResizeMode="NoResize">
+
+    <i:Interaction.Behaviors>
+        <behaviors:CloseableBehavior/>
+    </i:Interaction.Behaviors>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox Text="{Binding Path=Text}" Margin="4"/>
+        
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button MinWidth="60" Margin="4" Command="{Binding Path=OkCommand}" IsDefault="True">_OK</Button>
+            <Button MinWidth="60" Margin="4" IsCancel="True">_Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

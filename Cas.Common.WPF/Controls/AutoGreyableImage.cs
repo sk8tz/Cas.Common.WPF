@@ -31,15 +31,19 @@ namespace Cas.Common.WPF.Controls
         private static void OnAutoGreyScaleImageIsEnabledPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs args)
         {
             var autoGreyScaleImg = source as AutoGreyableImage;
+
             var isEnable = Convert.ToBoolean(args.NewValue);
+
             if (autoGreyScaleImg != null)
             {
                 if (!isEnable)
                 {
                     // Get the source bitmap
                     var bitmapImage = new BitmapImage(new Uri(autoGreyScaleImg.Source.ToString()));
+
                     // Convert it to Gray
                     autoGreyScaleImg.Source = new FormatConvertedBitmap(bitmapImage, PixelFormats.Gray32Float, null, 0);
+
                     // Create Opacity Mask for greyscale image as FormatConvertedBitmap does not keep transparency info
                     autoGreyScaleImg.OpacityMask = new ImageBrush(bitmapImage);
                 }
@@ -47,6 +51,7 @@ namespace Cas.Common.WPF.Controls
                 {
                     // Set the Source property to the original value.
                     autoGreyScaleImg.Source = ((FormatConvertedBitmap)autoGreyScaleImg.Source).Source;
+
                     // Reset the Opcity Mask
                     autoGreyScaleImg.OpacityMask = null;
                 }

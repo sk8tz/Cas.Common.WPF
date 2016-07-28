@@ -59,7 +59,7 @@
     <Compile Include="Behaviors\ICloseableViewModel.cs" />
     <Compile Include="Controls\AutoGreyableImage.cs" />
     <Compile Include="Controls\BindablePasswordBox.cs" />
-    <Compile Include="Converters\AutomateOnChangeBehavior.cs" />
+    <Compile Include="Behaviors\AnimateOnChangeBehavior.cs" />
     <Compile Include="Converters\CollapsedWhenFalseConverter.cs" />
     <Compile Include="Converters\CollapsedWhenTrueConverter.cs" />
     <Compile Include="Converters\HiddenWhenFalseConverter.cs" />
@@ -67,17 +67,17 @@
     <Compile Include="FileDialogOptions.cs" />
     <Compile Include="FileDialogResult.cs" />
     <Compile Include="FileDialogService.cs" />
-    <Compile Include="IFileDialogService.cs" />
+    <Compile Include="Interfaces\IFileDialogService.cs" />
     <Compile Include="Interfaces\IMessageBoxService.cs" />
     <Compile Include="Interfaces\IViewRegistration.cs" />
     <Compile Include="Interfaces\IViewService.cs" />
     <Compile Include="IViewServiceExtensions.cs" />
     <Compile Include="MessageBoxService.cs" />
-    <Compile Include="RelayCommand.cs" />
+    <Compile Include="SimpleRelayCommand.cs" />
+    <Compile Include="ViewModelException.cs" />
     <Compile Include="ViewRegistration.cs" />
+    <Compile Include="ViewRegistrationNotFoundException.cs" />
     <Compile Include="ViewService.cs" />
-    <Compile Include="WeakAction.cs" />
-    <Compile Include="WeakFunc.cs" />
     <Compile Include="WindowUtil.cs" />
   </ItemGroup>
   <ItemGroup>

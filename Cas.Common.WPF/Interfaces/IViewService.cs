@@ -3,12 +3,12 @@
 namespace Cas.Common.WPF.Interfaces
 {
     /// <summary>
-    /// 
+    /// Lightweight framework for MVVM View creation.
     /// </summary>
     public interface IViewService
     {
         /// <summary>
-        /// Shows a dialog.
+        /// Shows a modal dialog.
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
         /// <param name="viewModel"></param>
@@ -16,7 +16,7 @@ namespace Cas.Common.WPF.Interfaces
         bool? ShowDialog<TViewModel>(TViewModel viewModel);
 
         /// <summary>
-        /// 
+        /// Shows a non modal window.
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
         /// <param name="viewModel"></param>
@@ -28,10 +28,9 @@ namespace Cas.Common.WPF.Interfaces
         void AddRegistration(IViewRegistration registration);
 
         /// <summary>
-        /// Removes a registration
+        /// Removes a registration.
         /// </summary>
         /// <param name="registration"></param>
         void RemoveRegistration(IViewRegistration registration);
-
     }
 }

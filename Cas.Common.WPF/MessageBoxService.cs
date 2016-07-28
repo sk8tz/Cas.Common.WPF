@@ -4,15 +4,20 @@ using Cas.Common.WPF.Interfaces;
 
 namespace Cas.Common.WPF
 {
+    /// <summary>
+    /// Implementation of IMessageBoxService.
+    /// </summary>
     public class MessageBoxService : IMessageBoxService
     {
-        public MessageBoxResult ShowMessageBox(string messageBoxText, 
+        public MessageBoxResult Show(string messageBoxText, 
             string caption = null, 
             MessageBoxButton button = MessageBoxButton.OK, 
             MessageBoxImage icon = MessageBoxImage.None, 
             MessageBoxResult defaultResult = MessageBoxResult.None)
         {
             var owner = WindowUtil.GetActiveWindow();
+
+            caption = caption ?? "";
 
             if (owner == null)
             {

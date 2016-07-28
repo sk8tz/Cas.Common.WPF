@@ -5,14 +5,12 @@ using Cas.Common.WPF.Interfaces;
 
 namespace Cas.Common.WPF
 {
+    /// <summary>
+    /// Implementation of IViewService
+    /// </summary>
     public class ViewService : IViewService
     {
         private readonly Dictionary<Type, IViewRegistration> _registrations = new Dictionary<Type, IViewRegistration>();
-
-        /// <summary>
-        /// Singleton instance of the view service.
-        /// </summary>
-        public static readonly IViewService Instance = new ViewService();
 
         private IViewRegistration GetRegistration(Type viewModelType)
         {
@@ -33,7 +31,7 @@ namespace Cas.Common.WPF
                 }
             }
 
-            throw new InvalidOperationException($"Unable to find a View registration for view model with type '{viewModelType.Name}'.");
+            throw new ViewRegistrationNotFoundException($"Unable to find a View registration for view model with type '{viewModelType.Name}'.");
         }
 
         private Window CreateView<TViewModel>(TViewModel viewModel)

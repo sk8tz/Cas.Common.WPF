@@ -1,0 +1,51 @@
+﻿<Window x:Class="ConvertersExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConvertersExample"
+        xmlns:viewModel="clr-namespace:ConvertersExample.ViewModel"
+        xmlns:converters="clr-namespace:Cas.Common.WPF.Converters;assembly=Cas.Common.WPF"
+        mc:Ignorable="d"
+        Background="Gray"
+        DataContext="{x:Static viewModel:ViewModelLocator.Main}"
+        ResizeMode="NoResize"
+        Title="MainWindow" SizeToContent="Height" Width="525">
+    
+    <Window.Resources>
+        <converters:HiddenWhenTrueConverter x:Key="HiddenWhenTrueConverter"/>
+        <converters:HiddenWhenFalseConverter x:Key="HiddenWhenFalseConverter"/>
+        <converters:CollapsedWhenTrueConverter x:Key="CollapsedWhenTrueConverter"/>
+        <converters:CollapsedWhenFalseConverter x:Key="CollapsedWhenFalseConverter"/>
+        <converters:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+    </Window.Resources>
+    
+    <StackPanel>
+        
+        <StackPanel.Resources>
+            <Style TargetType="CheckBox">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="4"/>
+                </Style.Setters>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter  Property="Margin" Value="4"/>
+                    <Setter Property="Background" Value="Yellow"/>
+                </Style.Setters>
+            </Style>
+        </StackPanel.Resources>
+        
+        <CheckBox IsChecked="{Binding Path=Value}">Value</CheckBox>
+        <CheckBox IsChecked="{Binding Path=Value, Converter={StaticResource InvertBooleanConverter}}">Inverted Value</CheckBox>
+
+        <TextBlock Visibility="{Binding Path=Value, Converter={StaticResource CollapsedWhenTrueConverter}}">CollapsedWhenTrueConverter</TextBlock>
+
+        <TextBlock Visibility="{Binding Path=Value, Converter={StaticResource CollapsedWhenFalseConverter}}">CollapsedWhenFalseConverter</TextBlock>
+
+        <TextBlock Visibility="{Binding Path=Value, Converter={StaticResource HiddenWhenTrueConverter}}">HiddenWhenTrueConverter</TextBlock>
+
+        <TextBlock Visibility="{Binding Path=Value, Converter={StaticResource HiddenWhenFalseConverter}}">HiddenWhenFalseConverter</TextBlock>
+
+    </StackPanel>
+</Window>

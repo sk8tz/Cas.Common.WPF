@@ -1,0 +1,32 @@
+﻿<Window x:Class="MultiSelectorExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiSelectorExample"
+        xmlns:viewModel="clr-namespace:MultiSelectorExample.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:Cas.Common.WPF.Behaviors;assembly=Cas.Common.WPF"
+        mc:Ignorable="d"
+        DataContext="{x:Static viewModel:ViewModelLocator.Main}"
+        Title="MultiSelector Example" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <DataGrid ItemsSource="{Binding Path=Items}">
+            <i:Interaction.Behaviors>
+                <behaviors:MultiSelectorSelectedItemsBehavior SelectedItems="{Binding Path=SelectedItems}"/>
+            </i:Interaction.Behaviors>
+        </DataGrid>
+        
+        <StatusBar Grid.Row="1">
+            <TextBlock>
+                <TextBlock Text="Selected: "/>
+                <TextBlock Text="{Binding Path=SelectedItems.Count}"/>
+            </TextBlock>
+        </StatusBar>
+    </Grid>
+</Window>

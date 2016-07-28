@@ -4,6 +4,9 @@ using Microsoft.Win32;
 
 namespace Cas.Common.WPF
 {
+    /// <summary>
+    /// Implementation of IFileDialogService.
+    /// </summary>
     public class FileDialogService : IFileDialogService
     {
         private FileDialogResult ShowDialog(FileDialog dialog, FileDialogOptions options)
@@ -41,11 +44,21 @@ namespace Cas.Common.WPF
             return null;
         }
 
+        /// <summary>
+        /// Show the OpenFileDialog.
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public FileDialogResult ShowOpenFileDialog(FileDialogOptions options = null)
         {
             return ShowDialog(new OpenFileDialog(), options);
         }
 
+        /// <summary>
+        /// Show the SafeFileDialog.
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public FileDialogResult ShowSaveFileDialog(FileDialogOptions options = null)
         {
             return ShowDialog(new SaveFileDialog(), options);

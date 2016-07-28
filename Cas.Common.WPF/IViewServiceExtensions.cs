@@ -4,6 +4,9 @@ using Cas.Common.WPF.Interfaces;
 
 namespace Cas.Common.WPF
 {
+    /// <summary>
+    /// Extensions for the IViewService interface.
+    /// </summary>
     public static class IViewServiceExtensions
     {
         /// <summary>
@@ -28,6 +31,14 @@ namespace Cas.Common.WPF
             return registration;
         }
 
+        /// <summary>
+        /// Registers a viewmodel type with a view factory.
+        /// </summary>
+        /// <typeparam name="TViewModel"></typeparam>
+        /// <typeparam name="TView"></typeparam>
+        /// <param name="viewService"></param>
+        /// <param name="viewFactory"></param>
+        /// <returns></returns>
         public static IViewRegistration Register<TViewModel, TView>(this IViewService viewService,
             Func<TView> viewFactory)
             where TView : Window
@@ -45,6 +56,13 @@ namespace Cas.Common.WPF
             return registration;
         }
 
+        /// <summary>
+        /// Reigsters a viewmodel type with a view factory.
+        /// </summary>
+        /// <param name="viewService"></param>
+        /// <param name="viewModelType"></param>
+        /// <param name="viewFactory"></param>
+        /// <returns></returns>
         public static IViewRegistration Register(this IViewService viewService, Type viewModelType,
             Func<Window> viewFactory)
         {
