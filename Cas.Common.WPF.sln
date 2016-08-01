@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertersExample", "Conver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformViewModelExample", "PerformViewModelExample\PerformViewModelExample.csproj", "{04034024-2B3E-40CF-AFA5-D7FF9362F4C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEditServiceExample", "TextEditServiceExample\TextEditServiceExample.csproj", "{69562F1E-C039-419A-96BD-7049FC10A286}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{04034024-2B3E-40CF-AFA5-D7FF9362F4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04034024-2B3E-40CF-AFA5-D7FF9362F4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04034024-2B3E-40CF-AFA5-D7FF9362F4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69562F1E-C039-419A-96BD-7049FC10A286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69562F1E-C039-419A-96BD-7049FC10A286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69562F1E-C039-419A-96BD-7049FC10A286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69562F1E-C039-419A-96BD-7049FC10A286}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,5 +126,6 @@ Global
 		{D0150CE1-4482-4141-8CFF-AF4C5BCC4024} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
 		{3340D488-494E-4ACC-9EAF-60C4339DAE83} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
 		{04034024-2B3E-40CF-AFA5-D7FF9362F4C1} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
+		{69562F1E-C039-419A-96BD-7049FC10A286} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
 	EndGlobalSection
 EndGlobal

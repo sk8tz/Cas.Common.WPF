@@ -1,20 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86D22D5C-D662-4F6D-A2D3-F27C6D6D33C0}</ProjectGuid>
-    <OutputType>library</OutputType>
+    <ProjectGuid>{69562F1E-C039-419A-96BD-7049FC10A286}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cas.Common.WPF</RootNamespace>
-    <AssemblyName>Cas.Common.WPF</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>TextEditServiceExample</RootNamespace>
+    <AssemblyName>TextEditServiceExample</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,30 +24,25 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Cas.Common.WPF.XML</DocumentationFile>
-    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>1591</NoWarn>
-    <DocumentationFile>bin\Release\Cas.Common.WPF.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -54,47 +51,26 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\BindableSelectedTreeViewItemBehavior.cs" />
-    <Compile Include="Behaviors\CloseableBehavior.cs" />
-    <Compile Include="Behaviors\DraggableBehaviorBase.cs" />
-    <Compile Include="Behaviors\MultiSelectorSelectedItemsBehavior.cs" />
-    <Compile Include="Behaviors\ICloseableViewModel.cs" />
-    <Compile Include="Behaviors\SelectAllOnFocusBehavior.cs" />
-    <Compile Include="Controls\AutoGreyableImage.cs" />
-    <Compile Include="Controls\BindablePasswordBox.cs" />
-    <Compile Include="Behaviors\AnimateOnChangeBehavior.cs" />
-    <Compile Include="Converters\CollapsedWhenFalseConverter.cs" />
-    <Compile Include="Converters\CollapsedWhenTrueConverter.cs" />
-    <Compile Include="Converters\HiddenWhenFalseConverter.cs" />
-    <Compile Include="Converters\HiddenWhenTrueConverter.cs" />
-    <Compile Include="FileDialogOptions.cs" />
-    <Compile Include="FileDialogResult.cs" />
-    <Compile Include="FileDialogService.cs" />
-    <Compile Include="Interfaces\IFileDialogService.cs" />
-    <Compile Include="Interfaces\IMessageBoxService.cs" />
-    <Compile Include="Interfaces\ITextEditService.cs" />
-    <Compile Include="Interfaces\IViewRegistration.cs" />
-    <Compile Include="Interfaces\IViewService.cs" />
-    <Compile Include="IViewServiceExtensions.cs" />
-    <Compile Include="MessageBoxService.cs" />
-    <Compile Include="SimpleRelayCommand.cs" />
-    <Compile Include="TextEditService.cs" />
-    <Compile Include="TextEdit\TextEditDialogView.xaml.cs">
-      <DependentUpon>TextEditDialogView.xaml</DependentUpon>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TextEdit\TextEditDialogViewModel.cs" />
-    <Compile Include="ViewModelException.cs" />
-    <Compile Include="ViewRegistration.cs" />
-    <Compile Include="ViewRegistrationNotFoundException.cs" />
-    <Compile Include="ViewService.cs" />
-    <Compile Include="WindowUtil.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\InvertBooleanConverter.cs" />
-    <Compile Include="ExtensionProperties\FocusExtension.cs" />
-    <Compile Include="FrameworkElementExtensions.cs" />
-    <Compile Include="ObservableCollectionExtensions.cs" />
-    <Compile Include="OrderedListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,8 +88,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Cas.Common.WPF.nuspec" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,13 +95,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="TextEdit\TextEditDialogView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\TextFile_16x.png" />
+    <ProjectReference Include="..\Cas.Common.WPF\Cas.Common.WPF.csproj">
+      <Project>{86D22D5C-D662-4F6D-A2D3-F27C6D6D33C0}</Project>
+      <Name>Cas.Common.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
