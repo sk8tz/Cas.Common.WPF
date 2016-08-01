@@ -1,0 +1,49 @@
+﻿<Window x:Class="Cas.Common.WPF.TextEdit.TextEditDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:Cas.Common.WPF.Behaviors"
+        xmlns:textEdit="clr-namespace:Cas.Common.WPF.TextEdit"
+        mc:Ignorable="d"
+        x:ClassModifier="internal"
+        ResizeMode="NoResize"
+        SizeToContent="Height"
+        Loaded="TextEditDialogView_OnLoaded"
+        WindowStartupLocation="CenterOwner"
+        d:DataContext="{d:DesignInstance textEdit:TextEditDialogViewModel, d:IsDesignTimeCreatable=False}"
+        Title="{Binding Path=Title}" Width="350" Icon="/Cas.Common.WPF;component/Images/TextFile_16x.png">
+    
+    <i:Interaction.Behaviors>
+        <behaviors:CloseableBehavior/>
+    </i:Interaction.Behaviors>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Margin="4" Text="{Binding Path=Caption}" VerticalAlignment="Center" HorizontalAlignment="Left" />
+        
+        <TextBox Grid.Row="1" Margin="4" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" x:Name="TextTextBox" >
+            <i:Interaction.Behaviors>
+                <behaviors:SelectAllOnFocusBehavior/>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="4"/>
+                    <Setter Property="MinWidth" Value="60"/>
+                </Style>
+            </StackPanel.Resources>
+            
+            <Button Command="{Binding Path=OkCommand}" IsDefault="True">_OK</Button>
+            <Button IsCancel="True">_Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>
