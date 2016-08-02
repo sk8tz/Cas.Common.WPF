@@ -18,7 +18,7 @@ namespace Cas.Common.WPF
     {
         private readonly Func<TItemType> _newItemFactory;
         private readonly Action<TItemType> _addedAction;
-        private readonly Action<TItemType> _deletedAction;
+        private readonly Func<TItemType, bool> _deleted;
         private readonly Func<TItemType, bool> _canDelete;
         private IList _selectedItems;
 
@@ -28,13 +28,13 @@ namespace Cas.Common.WPF
         /// <param name="newItemFactory">Creates a new item for the list.</param>
         /// <param name="items">Optionally pass in an initial list of items</param>
         /// <param name="addedAction">Action to perform when an item is added.</param>
-        /// <param name="deletedAction">Action to perform when an item is deleted.</param>
+        /// <param name="deleted">Action to perform when an item is deleted.</param>
         /// <param name="canDelete">Determines if an item can be deleted. This is called once before the deletion operation is performed.</param>
         public OrderedListViewModel(
             Func<TItemType> newItemFactory, 
             IEnumerable<TItemType> items = null, 
             Action<TItemType> addedAction = null, 
-            Action<TItemType> deletedAction = null,
+            Func<TItemType, bool> deleted = null,
             Func<TItemType, bool> canDelete = null)
         {
             if (newItemFactory == null) throw new ArgumentNullException(nameof(newItemFactory));
@@ -49,7 +49,7 @@ namespace Cas.Common.WPF
 
             _newItemFactory = newItemFactory;
             _addedAction = addedAction;
-            _deletedAction = deletedAction;
+            _deleted = deleted;
             _canDelete = canDelete;
 
             MoveUpCommand = new SimpleRelayCommand(MoveUp, CanMoveUp);
@@ -60,7 +60,21 @@ namespace Cas.Common.WPF
             InsertAboveCommand = new SimpleRelayCommand(InsertAbove, CanInsertAbove);
             InsertBelowCommand = new SimpleRelayCommand(InsertBelow, CanInsertBelow);
         }
-       
+
+        protected override void RemoveItem(int index)
+        {
+            if (_deleted != null)
+            {
+                if (!_deleted(Items[index]))
+                {
+                    //Removing the item has been cancelled.
+                    return;
+                }
+            }
+
+            base.RemoveItem(index);
+        }
+
         /// <summary>
         /// Handles the collection changing.
         /// </summary>
@@ -83,17 +97,17 @@ namespace Cas.Common.WPF
 
                     break;
 
-                case NotifyCollectionChangedAction.Remove:
+                //case NotifyCollectionChangedAction.Remove:
 
-                    if (_deletedAction != null)
-                    {
-                        foreach (var item in e.OldItems.Cast<TItemType>())
-                        {
-                            _deletedAction(item);
-                        }
-                    }
+                //    if (_deleted != null)
+                //    {
+                //        foreach (var item in e.OldItems.Cast<TItemType>())
+                //        {
+                //            _deleted(item);
+                //        }
+                //    }
 
-                    break;
+                //    break;
             }
         }
 
