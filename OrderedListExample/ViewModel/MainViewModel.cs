@@ -10,8 +10,9 @@ namespace OrderedListExample.ViewModel
         public MainViewModel()
         {
             _items = new OrderedListViewModel<ItemViewModel>(
-                () => new ItemViewModel(),
-                addedAction: item => Console.WriteLine($"Item '{item.Text}' added"),
+                //() => new ItemViewModel(),
+                () => null,
+                addedAction: item => Console.WriteLine($"Item '{item?.Text}' added"),
                 deletedAction: item => Console.WriteLine($"Item '{item.Text}' deleted"))
             {
                 new ItemViewModel() {Value = 1, Text = "One"},
