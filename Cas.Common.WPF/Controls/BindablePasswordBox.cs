@@ -6,6 +6,9 @@ namespace Cas.Common.WPF.Controls
     /// <summary>
     /// Provides a pasword box that can be bound to using MVVM.
     /// </summary>
+    /// <remarks>
+    /// http://stackoverflow.com/a/3214538/232566
+    /// </remarks>
     public class BindablePasswordBox : Decorator
     {
         /// <summary>
