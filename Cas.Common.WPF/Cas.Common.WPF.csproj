@@ -67,9 +67,13 @@
     <Compile Include="Converters\CollapsedWhenTrueConverter.cs" />
     <Compile Include="Converters\HiddenWhenFalseConverter.cs" />
     <Compile Include="Converters\HiddenWhenTrueConverter.cs" />
+    <Compile Include="DirtyService.cs" />
     <Compile Include="FileDialogOptions.cs" />
     <Compile Include="FileDialogResult.cs" />
     <Compile Include="FileDialogService.cs" />
+    <Compile Include="Interfaces\IMarkClean.cs" />
+    <Compile Include="Interfaces\IMarkDirty.cs" />
+    <Compile Include="Interfaces\IDirtyService.cs" />
     <Compile Include="Interfaces\IFileDialogService.cs" />
     <Compile Include="Interfaces\IMessageBoxService.cs" />
     <Compile Include="Interfaces\ITextEditService.cs" />

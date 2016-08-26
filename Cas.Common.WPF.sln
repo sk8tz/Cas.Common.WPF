@@ -37,6 +37,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformViewModelExample", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEditServiceExample", "TextEditServiceExample\TextEditServiceExample.csproj", "{69562F1E-C039-419A-96BD-7049FC10A286}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEditorApplication", "TextEditorApplication\TextEditorApplication.csproj", "{1CB29C24-9FB1-4F9D-A252-51370A5DD3A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{27D922A0-765E-4EB6-A3BB-21EA15F3697C}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +114,10 @@ Global
 		{69562F1E-C039-419A-96BD-7049FC10A286}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69562F1E-C039-419A-96BD-7049FC10A286}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69562F1E-C039-419A-96BD-7049FC10A286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB29C24-9FB1-4F9D-A252-51370A5DD3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB29C24-9FB1-4F9D-A252-51370A5DD3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB29C24-9FB1-4F9D-A252-51370A5DD3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB29C24-9FB1-4F9D-A252-51370A5DD3A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,5 +138,6 @@ Global
 		{3340D488-494E-4ACC-9EAF-60C4339DAE83} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
 		{04034024-2B3E-40CF-AFA5-D7FF9362F4C1} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
 		{69562F1E-C039-419A-96BD-7049FC10A286} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
+		{1CB29C24-9FB1-4F9D-A252-51370A5DD3A0} = {AD819295-7CAD-45ED-81B4-F10C8169B618}
 	EndGlobalSection
 EndGlobal
