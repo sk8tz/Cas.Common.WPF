@@ -17,9 +17,9 @@ Common code for WPF and MVVM.
 - IFileDialogService - For showing Open/Save dialogs in an injectable way.
 - IMessageBoxService - For showing message boxes in an injectable way.
 - IViewService - Create windows without the ViewModel needing to know about the view.
+- IDirtyService - Keeps track of whether a persistable unit has unsaved changes.
   - IMarkClean - Can mark the service as clean.
   - IMarkDirty - Can mark the service as dirty.
-- IDirtyService - Keeps track of whether a persistable unit has unsaved changes.
 - ITextEditService - A simple popup for editing text.
 - ICloseableViewModel - Supports the CloseableBehavior for closing a window from the ViewModel.
 
